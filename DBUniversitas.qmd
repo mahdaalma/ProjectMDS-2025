@@ -74,6 +74,7 @@ Wilayah (
       id_wilayah VARCHAR(15) NOT NULL,
       nama_univ VARCHAR(150),
       akred_univ VARCHAR(50),
+      qs_rank VARCHAR(50),
       FOREIGN KEY (id_wilayah) REFERENCES Wilayah(id_wilayah)
     )
   ",
@@ -158,8 +159,11 @@ tryCatch({
  dbDisconnect(con_db)
 
 ```
+
 ## 6. Import Data
+
 ### Sambungkan ke Database MySQL
+
 ```{r}
 library(DBI)
 library(RMariaDB)
@@ -175,25 +179,27 @@ con_db <- dbConnect(
 ```
 
 #Baca Data dari CSV
+
 ```{r}
 #Universitas
-univ <- read.csv("D:/MDS/ProjectMDS-2025/Dataset Kelompok_2/UNIVERSITAS.csv", stringsAsFactors = FALSE)
+univ <- read.csv("D:/Kuliah/S2/MDS/git/ProjectMDS-2025/Dataset Kelompok_2/UNIVERSITAS update.csv", stringsAsFactors = FALSE)
 head(univ)  # Cek apakah data terbaca dengan benar
 
 #Jalur Masuk
-jalur_masuk <- read.csv("D:/MDS/ProjectMDS-2025/Dataset Kelompok_2/jalur masuk1.csv", stringsAsFactors = FALSE)
+jalur_masuk <- read.csv("D:/Kuliah/S2/MDS/git/ProjectMDS-2025/Dataset Kelompok_2/jalur masuk1.csv", stringsAsFactors = FALSE)
 head(jalur_masuk)  # Cek apakah data terbaca dengan benar
 
 #Prodi StatHub
-prodi_stathub <- read.csv("D:/MDS/ProjectMDS-2025/Dataset Kelompok_2/Prodi StatHub.csv", stringsAsFactors = FALSE)
+prodi_stathub <- read.csv("D:/Kuliah/S2/MDS/git/ProjectMDS-2025/Dataset Kelompok_2/Prodi StatHub.csv", stringsAsFactors = FALSE)
 head(prodi_stathub)  # Cek apakah data terbaca dengan benar
 
 #Wilayah
-wilayah <- read.csv("D:/MDS/ProjectMDS-2025/Dataset Kelompok_2/wilayah.csv", stringsAsFactors = FALSE)
+wilayah <- read.csv("D:/Kuliah/S2/MDS/git/ProjectMDS-2025/Dataset Kelompok_2/wilayah.csv", stringsAsFactors = FALSE)
 head(wilayah)  # Cek apakah data terbaca dengan benar
 ```
 
 #Masukkan Data ke MySQL
+
 ```{r}
 library(DBI)
 
@@ -205,7 +211,7 @@ for (i in 1:nrow(wilayah)) {
 
 #Universitas
 for (i in 1:nrow(univ)) {
-  query <- sprintf("INSERT INTO Universitas (id_univ, id_wilayah, nama_univ, akred_univ) VALUES ('%s', '%s', '%s', '%s')",           univ$id_univ[i], univ$id_wilayah[i], univ$nama_univ[i], univ$akred_univ[i])
+  query <- sprintf("INSERT INTO Universitas (id_univ, id_wilayah, nama_univ, akred_univ, qs_rank) VALUES ('%s', '%s', '%s', '%s', '%s')",           univ$id_univ[i], univ$id_wilayah[i], univ$nama_univ[i], univ$akred_univ[i],univ$qs_rank[i])
   dbExecute(con_db, query)
 }
 
@@ -225,6 +231,7 @@ jalur_masuk$id_prodi[i], jalur_masuk$id_univ[i], jalur_masuk$jalur_masuk[i], jal
 ```
 
 #### Tambahan
+
 ```{r}
 #Rename Tabel
 dbExecute(con_db, "ALTER TABLE Universitas CHANGE nama_dept nama_univ VARCHAR(150);")
@@ -237,7 +244,7 @@ dbExecute(con_db, "DELETE FROM jalur_masuk")
 
 # Menghapus Karakter Tidak Valid
 ## Baca CSV
-jalur_masuk <- read.csv("D:/MDS/ProjectMDS-2025/Dataset Kelompok_2/jalur masuk1.csv", stringsAsFactors = FALSE)
+jalur_masuk <- read.csv("D:/Kuliah/S2/MDS/git/ProjectMDS-2025/Dataset Kelompok_2/jalur masuk1.csv", stringsAsFactors = FALSE)
 
 ## Bersihkan karakter yang tidak valid di setiap kolom
 jalur_masuk[] <- lapply(jalur_masuk, function(x) iconv(x, from = "latin1", to = "ASCII", sub = ""))
