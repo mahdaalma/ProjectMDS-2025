@@ -86,8 +86,8 @@ fluidPage(
     ),
     
     menuItem(
-      text = "Pendaftar",
-      tabName = "pendaftar",
+      text = "Pendaftaran",
+      tabName = "pendaftaran",
       icon = icon("users") # Ikon orang (user)
     ),
     
@@ -98,8 +98,8 @@ fluidPage(
     ),
     
     menuItem(
-      text = "Info Universitas",
-      tabName = "info_univ",
+      text = "Info",
+      tabName = "info",
       icon = icon("info-circle") # Ikon informasi
     )
   )
@@ -257,9 +257,9 @@ fluidPage(
           )
         ),
         
-        #-------------------------------Tab Pendaftar--------------------------------#
+        #-------------------------------Tab Pendaftaran--------------------------------#
         tabItem(
-          tabName = "pendaftar",
+          tabName = "pendaftaran",
           fluidRow(
             tags$h1("Jalur Pendaftaran Tiap Universitas", style = "font-size:40px;font-weight:bold;display: inline;align-items: center;background-color: #C1E3FC; padding: 15px; border-radius: 8px;"),
           ),
@@ -307,300 +307,314 @@ fluidPage(
         #--------------------------Tab Galeri Universitas--------------------------#
         tabItem(
           tabName = "galeri_univ",
+          
+          # Header
           fluidRow(
-            tags$h1("Gallery Universitas Prodi Statistika di Indonesia", style = "font-size:40px;font-weight:bold;display: inline;align-items: center;background-color: #C1E3FC; padding: 15px; border-radius: 8px;"),
+            div(
+              style = "background-color: #C1E3FC; padding: 20px; border-radius: 12px; text-align: center; margin-bottom: 20px; color: #003366;",
+              tags$h1("Gallery Universitas Prodi Statistika di Indonesia", 
+                      style = "font-size:38px; font-weight:bold; margin:0; font-family:Arial, sans-serif;")
+            )
           ),
+          
           tags$br(),
+          
+          # Galeri dalam Grid Layout 4 Kolom
           fluidRow(
-            box(
-              title = "Universitas Negeri Makassar", solidHeader = TRUE, status = "primary", width = 3,
+            column(
+              width = 3,
               div(
-                img(src = "UNM.jpg", height = 200, width = 200), 
-                tags$a(href="https://unm.ac.id/", "info detail"), 
-                style = "text-align: center;"
-              ),
-              style = "display: flex; justify-content: center; align-items: center;"
+                class = "univ-card",
+                img(src = "www/UNM.jpg", class = "univ-img"),  # Tambahkan "www/" jika perlu
+                tags$h4("Universitas Negeri Makassar"),
+                tags$a(href="https://unm.ac.id/", "Info Detail", class = "info-btn")
+              )
             ),
-            box(
-              title = "Universitas Negeri Padang",solidHeader = TRUE,status="primary", width = 3,
+            column(
+              width = 3,
               div(
-                img(src = "UNP.jpg", height = 200, width = 200), 
-                tags$a(href="https://unp.ac.id/", "info detail"),
-                style = "text-align: center;"
-              ),
-              style = "display: flex; justify-content: center; align-items: center;"
+                class = "univ-card",
+                img(src = "www/UNP.jpg", class = "univ-img"), 
+                tags$h4("Universitas Negeri Padang"),
+                tags$a(href="https://unp.ac.id/", "Info Detail", class = "info-btn")
+              )
             ),
-            box(
-              title = "Universitas Mulawarman",solidHeader = TRUE,status="primary", width = 3,
+            column(
+              width = 3,
               div(
-                img(src = "UNMUL.jpg", height = 200, width = 200), 
-                tags$a(href="https://unmul.ac.id/", "info detail"),
-                style = "text-align: center;"
-              ),
-              style = "display: flex; justify-content: center; align-items: center;"
+                class = "univ-card",
+                img(src = "www/UNMUL.jpg", class = "univ-img"), 
+                tags$h4("Universitas Mulawarman"),
+                tags$a(href="https://unmul.ac.id/", "Info Detail", class = "info-btn")
+              )
             ),
-            box(
-              title = "Universitas Negeri Gorontalo",solidHeader = TRUE,status="primary", width = 3,
+            column(
+              width = 3,
               div(
-                img(src = "GORONTALO.jpg", height = 200, width = 200), 
-                tags$a(href="https://www.ung.ac.id/", "info detail"),
-                style = "text-align: center;"
-              ),
-              style = "display: flex; justify-content: center; align-items: center;"
+                class = "univ-card",
+                img(src = "www/Gorontalo.jpg", class = "univ-img"), 
+                tags$h4("Universitas Negeri Gorontalo"),
+                tags$a(href="https://www.ung.ac.id/", "Info Detail", class = "info-btn")
+              )
+            ),
+            column(
+              width = 3,
+              div(
+                class = "univ-card",
+                img(src = "www/ITK.jpg", class = "univ-img"), 
+                tags$h4("Institut Teknologi Kalimantan"),
+                tags$a(href="https://itk.ac.id/", "Info Detail", class = "info-btn")
+              )
+            ),
+            column(
+              width = 3,
+              div(
+                class = "univ-card",
+                img(src = "www/UNRI.jpg", class = "univ-img"), 
+                tags$h4("Universitas Riau"),
+                tags$a(href="https://unri.ac.id/", "Info Detail", class = "info-btn")
+              )
+            ),
+            column(
+              width = 3,
+              div(
+                class = "univ-card",
+                img(src = "www/UNLAM.jpg", class = "univ-img"), 
+                tags$h4("Universitas Lambung Mangkurat"),
+                tags$a(href="https://ulm.ac.id/", "Info Detail", class = "info-btn")
+              )
+            ),
+            column(
+              width = 3,
+              div(
+                class = "univ-card",
+                img(src = "www/UNTAN.jpg", class = "univ-img"), 
+                tags$h4("Universitas Tanjungpura"),
+                tags$a(href="https://untan.ac.id/", "Info Detail", class = "info-btn")
+              )
+            ),
+            column(
+              width = 3,
+              div(
+                class = "univ-card",
+                img(src = "www/CENDRAWASIH.jpg", class = "univ-img"), 
+                tags$h4("Universitas Cendrawasih"),
+                tags$a(href="https://www.uncen.ac.id/", "Info Detail", class = "info-btn")
+              )
+            ),
+            column(
+              width = 3,
+              div(
+                class = "univ-card",
+                img(src = "www/TADULAKO.jpg", class = "univ-img"), 
+                tags$h4("Universitas Tadulako"),
+                tags$a(href="https://untad.ac.id/", "Info Detail", class = "info-btn")
+              )
+            ),
+            column(
+              width = 3,
+              div(
+                class = "univ-card",
+                img(src = "www/UNHAS_REKTORAT.jpg", class = "univ-img"), 
+                tags$h4("Universitas Hassanudin"),
+                tags$a(href="https://www.unhas.ac.id/", "Info Detail", class = "info-btn")
+              )
+            ),
+            column(
+              width = 3,
+              div(
+                class = "univ-card",
+                img(src = "www/UNRAM.jpg", class = "univ-img"), 
+                tags$h4("Universitas Patimura"),
+                tags$a(href="https://unpatti.ac.id/", "Info Detail", class = "info-btn")
+              )
+            ),
+            column(
+              width = 3,
+              div(
+                class = "univ-card",
+                img(src = "www/STIS.jpg", class = "univ-img"), 
+                tags$h4("Sekolah Tinggi Ilmu Statistika"),
+                tags$a(href="https://www.stis.ac.id/", "Info Detail", class = "info-btn")
+              )
+            ),
+            column(
+              width = 3,
+              div(
+                class = "univ-card",
+                img(src = "www/UT.jpg", class = "univ-img"), 
+                tags$h4("Universitas Terbuka Tangerang"),
+                tags$a(href="https://www.ut.ac.id/", "Info Detail", class = "info-btn")
+              )
+            ),
+            column(
+              width = 3,
+              div(
+                class = "univ-card",
+                img(src = "www/UNPAD.jpg", class = "univ-img"), 
+                tags$h4("Universitas Padjajaran"),
+                tags$a(href="https://www.unpad.ac.id/", "Info Detail", class = "info-btn")
+              )
+            ),
+            column(
+              width = 3,
+              div(
+                class = "univ-card",
+                img(src = "www/IPB.jpg", class = "univ-img"), 
+                tags$h4("Institut Pertanian Bogor"),
+                tags$a(href="https://www.ipb.ac.id/", "Info Detail", class = "info-btn")
+              )
+            ),
+            column(
+              width = 3,
+              div(
+                class = "univ-card",
+                img(src = "www/UNNES.jpg", class = "univ-img"), 
+                tags$h4("Universitas Negeri Semarang"),
+                tags$a(href="https://unnes.ac.id/", "Info Detail", class = "info-btn")
+              )
+            ),
+            column(
+              width = 3,
+              div(
+                class = "univ-card",
+                img(src = "www/UNDIP.jpg", class = "univ-img"), 
+                tags$h4("Universitas Diponegoro"),
+                tags$a(href="https://www.undip.ac.id/", "Info Detail", class = "info-btn")
+              )
+            ),
+            column(
+              width = 3,
+              div(
+                class = "univ-card",
+                img(src = "www/UI.jpg", class = "univ-img"), 
+                tags$h4("Universitas Indonesia"),
+                tags$a(href="https://www.ui.ac.id/", "Info Detail", class = "info-btn")
+              )
+            ),
+            column(
+              width = 3,
+              div(
+                class = "univ-card",
+                img(src = "www/ITS.jpg", class = "univ-img"), 
+                tags$h4("Institut Teknologi Sepuluh November"),
+                tags$a(href="https://www.its.ac.id/", "Info Detail", class = "info-btn")
+              )
+            ),
+            column(
+              width = 3,
+              div(
+                class = "univ-card",
+                img(src = "www/UNS.jpg", class = "univ-img"), 
+                tags$h4("Universitas Sebelas Maret"),
+                tags$a(href="https://uns.ac.id/id/", "Info Detail", class = "info-btn")
+              )
+            ),
+            column(
+              width = 3,
+              div(
+                class = "univ-card",
+                img(src = "www/UNJ.jpg", class = "univ-img"), 
+                tags$h4("Universitas Negeri Jakarta"),
+                tags$a(href="https://www.unj.ac.id/", "Info Detail", class = "info-btn")
+              )
+            ),
+            column(
+              width = 3,
+              div(
+                class = "univ-card",
+                img(src = "www/UNAIR.jpg", class = "univ-img"), 
+                tags$h4("Universitas Airlangga"),
+                tags$a(href="https://unair.ac.id/", "Info Detail", class = "info-btn")
+              )
+            ),
+            column(
+              width = 3,
+              div(
+                class = "univ-card",
+                img(src = "www/UNY.jpg", class = "univ-img"), 
+                tags$h4("Universitas Negeri Yogyakarta"),
+                tags$a(href="https://www.uny.ac.id/", "Info Detail", class = "info-btn")
+              )
+            ),
+            column(
+              width = 3,
+              div(
+                class = "univ-card",
+                img(src = "www/USU.jpg", class = "univ-img"), 
+                tags$h4("Universitas Sumatera Utara"),
+                tags$a(href="https://www.usu.ac.id/", "Info Detail", class = "info-btn")
+              )
+            ),
+            column(
+              width = 3,
+              div(
+                class = "univ-card",
+                img(src = "www/UGM.jpg", class = "univ-img"), 
+                tags$h4("Universitas Gajah Mada"),
+                tags$a(href="https://ugm.ac.id/", "Info Detail", class = "info-btn")
+              )
+            ),
+            column(
+              width = 3,
+              div(
+                class = "univ-card",
+                img(src = "www/UNSYIAH.jpg", class = "univ-img"), 
+                tags$h4("Universitas Syiah Kuala"),
+                tags$a(href="https://usk.ac.id/", "Info Detail", class = "info-btn")
+              )
+            ),
+            column(
+              width = 3,
+              div(
+                class = "univ-card",
+                img(src = "www/UNBRAW.jpg", class = "univ-img"), 
+                tags$h4("Universitas Brawijaya"),
+                tags$a(href="https://ub.ac.id/", "Info Detail", class = "info-btn")
+              )
             ),
           ),
-          fluidRow(
-            box(
-              title = "Institut Teknologi Kalimantan",solidHeader = TRUE,status="primary", width = 3,
-              div(
-                img(src = "ITK.jpg", height = 200, width = 200), 
-                tags$a(href="https://itk.ac.id/", "info detail"),
-                style = "text-align: center;"
-              ),
-              style = "display: flex; justify-content: center; align-items: center;"
-            ),
-            box(
-              title = "Universitas Riau",solidHeader = TRUE,status="primary", width = 3,
-              div(
-                img(src = "UNRI.jpg", height = 200, width = 200), 
-                tags$a(href="https://unri.ac.id/", "info detail"),
-                style = "text-align: center;"
-              ),
-              style = "display: flex; justify-content: center; align-items: center;"
-            ),
-            box(
-              title = "Universitas Lambung Mangkurat",solidHeader = TRUE,status="primary", width = 3,
-              div(
-                img(src = "UNLAM.jpg", height = 200, width = 200), 
-                tags$a(href="https://ulm.ac.id/id/", "info detail"),
-                style = "text-align: center;"
-              ),
-              style = "display: flex; justify-content: center; align-items: center;"
-            ),
-            box(
-              title = "Universitas Bengkulu",solidHeader = TRUE,status="primary", width = 3,
-              div(
-                img(src = "UNIB.png", height = 200, width = 200), 
-                tags$a(href="https://www.unib.ac.id/", "info detail"),
-                style = "text-align: center;"
-              ),
-              style = "display: flex; justify-content: center; align-items: center;"
-            ),
-          ),
-          fluidRow(
-            box(
-              title = "Universitas Tanjungpura",solidHeader = TRUE,status="primary", width = 3,
-              div(
-                img(src = "UNTAN.jpg", height = 200, width = 200), 
-                tags$a(href="https://untan.ac.id/", "info detail"),
-                style = "text-align: center;"
-              ),
-              style = "display: flex; justify-content: center; align-items: center;"
-            ),
-            box(
-              title = "Universitas Cendrawasih",solidHeader = TRUE,status="primary", width = 3,
-              div(
-                img(src = "CENDRAWASIH.png", height = 200, width = 200), 
-                tags$a(href="https://www.uncen.ac.id/", "info detail"),
-                style = "text-align: center;"
-              ),
-              style = "display: flex; justify-content: center; align-items: center;"
-            ),
-            box(
-              title = "Universitas Tadulako",solidHeader = TRUE,status="primary", width = 3,
-              div(
-                img(src = "TADULAKO.jpg", height = 200, width = 200), 
-                tags$a(href="https://untad.ac.id/", "info detail"),
-                style = "text-align: center;"
-              ),
-              style = "display: flex; justify-content: center; align-items: center;"
-            ),
-            box(
-              title = "Universitas Halo Oleo",solidHeader = TRUE,status="primary", width = 3,
-              div(
-                img(src = "HALU_OLEO.jpg", height = 200, width = 200), 
-                tags$a(href="https://uho.ac.id/", "info detail"),
-                style = "text-align: center;"
-              ),
-              style = "display: flex; justify-content: center; align-items: center;"
-            ),
-          ),
-          fluidRow(
-            box(
-              title = "Universitas Hassanudin",solidHeader = TRUE,status="primary", width = 3,
-              div(
-                img(src = "UNHAS_REKTORAT.jpg", height = 200, width = 200), 
-                tags$a(href="https://www.unhas.ac.id/", "info detail"),
-                style = "text-align: center;"
-              ),
-              style = "display: flex; justify-content: center; align-items: center;"
-            ),
-            box(
-              title = "Universitas Patimura",solidHeader = TRUE,status="primary", width = 3,
-              div(
-                img(src = "UNRAM.jpg", height = 200, width = 200), 
-                tags$a(href="https://unpatti.ac.id/", "info detail"),
-                style = "text-align: center;"
-              ),
-              style = "display: flex; justify-content: center; align-items: center;"
-            ),
-            box(
-              title = "Sekolah Tinggi Ilmu Statistika",solidHeader = TRUE,status="primary", width = 3,
-              div(
-                img(src = "STIS.jpg", height = 200, width = 200), 
-                tags$a(href="https://www.stis.ac.id/", "info detail"),
-                style = "text-align: center;"
-              ),
-              style = "display: flex; justify-content: center; align-items: center;"
-            ),
-            box(
-              title = "Universitas Terbuka Tangerang",solidHeader = TRUE,status="primary", width = 3,
-              div(
-                img(src = "UT.jpg", height = 200, width = 200), 
-                tags$a(href="https://www.ut.ac.id/", "info detail"),
-                style = "text-align: center;"
-              ),
-              style = "display: flex; justify-content: center; align-items: center;"
-            ),
-          ),
-          fluidRow(
-            box(
-              title = "Universitas Padjajaran",solidHeader = TRUE,status="primary", width = 3,
-              div(
-                img(src = "UNPAD.jpg", height = 200, width = 200), 
-                tags$a(href="https://www.unpad.ac.id/", "info detail"),
-                style = "text-align: center;"
-              ),
-              style = "display: flex; justify-content: center; align-items: center;"
-            ),
-            box(
-              title = "Institut Pertanian Bogor",solidHeader = TRUE,status="primary", width = 3,
-              div(
-                img(src = "IPB.jpg", height = 200, width = 200), 
-                tags$a(href="https://www.ipb.ac.id/", "info detail"),
-                style = "text-align: center;"
-              ),
-              style = "display: flex; justify-content: center; align-items: center;"
-            ),
-            box(
-              title = "Universitas Negeri Semarang",solidHeader = TRUE,status="primary", width = 3,
-              div(
-                img(src = "UNNES.jpg", height = 200, width = 200), 
-                tags$a(href="https://unnes.ac.id/", "info detail"),
-                style = "text-align: center;"
-              ),
-              style = "display: flex; justify-content: center; align-items: center;"
-            ),
-            box(
-              title = "Universitas Diponegoro",solidHeader = TRUE,status="primary", width = 3,
-              div(
-                img(src = "UNDIP.png", height = 200, width = 200), 
-                tags$a(href="https://www.undip.ac.id/", "info detail"),
-                style = "text-align: center;"
-              ),
-              style = "display: flex; justify-content: center; align-items: center;"
-            ),
-          ),
-          fluidRow(
-            box(
-              title = "Universitas Indonesia",solidHeader = TRUE,status="primary", width = 3,
-              div(
-                img(src = "UI.jpg", height = 200, width = 200), 
-                tags$a(href="https://www.ui.ac.id/", "info detail"),
-                style = "text-align: center;"
-              ),
-              style = "display: flex; justify-content: center; align-items: center;"
-            ),
-            box(
-              title = "Institut Teknologi Sepuluh November",solidHeader = TRUE,status="primary", width = 3,
-              div(
-                img(src = "ITS.jpg", height = 200, width = 200), 
-                tags$a(href="https://www.its.ac.id/", "info detail"),
-                style = "text-align: center;"
-              ),
-              style = "display: flex; justify-content: center; align-items: center;"
-            ),
-            box(
-              title = "Universitas Sebelas Maret",solidHeader = TRUE,status="primary", width = 3,
-              div(
-                img(src = "UNS.jpg", height = 200, width = 200), 
-                tags$a(href="https://uns.ac.id/id/", "info detail"),
-                style = "text-align: center;"
-              ),
-              style = "display: flex; justify-content: center; align-items: center;"
-            ),
-            box(
-              title = "Universitas Negeri Jakarta",solidHeader = TRUE,status="primary", width = 3,
-              div(
-                img(src = "UNJ.jpg", height = 200, width = 200), 
-                tags$a(href="https://www.unj.ac.id/", "info detail"),
-                style = "text-align: center;"
-              ),
-              style = "display: flex; justify-content: center; align-items: center;"
-            ),
-          ),
-          fluidRow(
-            box(
-              title = "Universitas Airlangga",solidHeader = TRUE,status="primary", width = 3,
-              div(
-                img(src = "UNAIR.jpg", height = 200, width = 200), 
-                tags$a(href="https://unair.ac.id/", "info detail"),
-                style = "text-align: center;"
-              ),
-              style = "display: flex; justify-content: center; align-items: center;"
-            ),
-            box(
-              title = "Universitas Negeri Yogyakarta",solidHeader = TRUE,status="primary", width = 3,
-              div(
-                img(src = "UNY.jpg", height = 200, width = 200), 
-                tags$a(href="https://www.uny.ac.id/", "info detail"),
-                style = "text-align: center;"
-              ),
-              style = "display: flex; justify-content: center; align-items: center;"
-            ),
-            box(
-              title = "Universitas Sumatera Utara",solidHeader = TRUE,status="primary", width = 3,
-              div(
-                img(src = "USU.jpg", height = 200, width = 200), 
-                tags$a(href="https://www.usu.ac.id/", "info detail"),
-                style = "text-align: center;"
-              ),
-              style = "display: flex; justify-content: center; align-items: center;"
-            ),
-            box(
-              title = "Universitas Gajah Mada",solidHeader = TRUE,status="primary", width = 3,
-              div(
-                img(src = "UGM.jpg", height = 200, width = 200), 
-                tags$a(href="https://ugm.ac.id/id/", "info detail"),
-                style = "text-align: center;"
-              ),
-              style = "display: flex; justify-content: center; align-items: center;"
-            ),
-          ),
-          fluidRow(
-            box(
-              title = "Universitas Syiah Kuala",solidHeader = TRUE,status="primary", width = 6,
-              div(
-                img(src = "UNSYIAH.png", height = 200, width = 200), 
-                tags$a(href="https://usk.ac.id/", "info detail"),
-                style = "text-align: center;"
-              ),
-              style = "display: flex; justify-content: center; align-items: center;"
-            ),
-            box(
-              title = "Universitas Brawijaya",solidHeader = TRUE,status="primary", width = 6,
-              div(
-                img(src = "UNBRAW.png", height = 200, width = 200), 
-                tags$a(href="https://ub.ac.id/", "info detail"),
-                style = "text-align: center;"
-              ),
-              style = "display: flex; justify-content: center; align-items: center;"
-            ),
-          ),
+          
+          # Tambahkan CSS untuk mendukung tampilan
+          tags$style(
+            HTML("
+      .univ-card {
+        background-color: #FFFFFF;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+        text-align: center;
+        margin: 10px;
+        transition: transform 0.3s ease-in-out;
+      }
+      .univ-card:hover {
+        transform: scale(1.05);
+      }
+      .univ-img {
+        width: 100%;
+        height: auto;
+        max-height: 180px;
+        border-radius: 8px;
+      }
+      .info-btn {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 8px 12px;
+        background-color: #0073e6;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+      }
+      .info-btn:hover {
+        background-color: #005bb5;
+      }
+    ")
+          )
         ),
-        #--------------------------Tab Info Universitas--------------------------#
+        #--------------------------Tab Info--------------------------#
         tabItem(
-          tabName = "info_univ",
+          tabName = "info",
           fluidRow(
             tags$h1("Info Pengembang Situs", style = "font-size:40px;font-weight:bold;display: inline;align-items: center;background-color: #C1E3FC; padding: 15px; border-radius: 8px;"),
           ),
