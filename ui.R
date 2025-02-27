@@ -6,6 +6,8 @@
 #    https://shiny.posit.co/
 #
 library(shiny)
+library(fontawesome)
+fa_metadata()$icon_names
 library(shinydashboard)
 library(shinydashboardPlus)
 library(RPostgreSQL)
@@ -17,6 +19,7 @@ library(plotly)
 library(tidyverse)
 library(rvest)
 library(shinythemes)
+
 #shinyUI(
   #dashboardPage(
     #dashboardHeader(),
@@ -26,11 +29,12 @@ library(shinythemes)
 #)
 #==========================USER INTERFACE (FRONT-END)===============================#
 
-ui <- dashboardPage(
+ui <- fluidPage(
+  dashboardPage(
     #---------------------------PART HEADER----------------------------------#
     dashboardHeader(
       title =div(
-        img(src = "topi.jpg", height = 60, width = 60),
+        img(src = "www/univ.jpg", height = 60, width = 60),
         
         style = "font-size:28px; color:#ffffff; font-weight:bold; 
          text-align:center; background-color:#0073e6; 
@@ -40,18 +44,18 @@ ui <- dashboardPage(
       dropdownMenu(type = "messages",
                    messageItem(
                      from = "statHub",
-                     message = "selamat datang!, Temukan informasi jurusan statistika di seluruh Indonesia!",
-                     icon = icon("globe",type="fas") #ikon globe untuk skala nasional
+                     message = "Selamat datang!, Temukan informasi jurusan statistika di seluruh Indonesia!",
+                     icon = icon("globe") #ikon globe untuk skala nasional
                    ),
                    messageItem(
                      from = "Berita Kampus",
                      message = "Cek update terbaru tentang acara dan prestasi kampus!",
-                     icon = icon("newspaper", type = "fas") #ikon koran untuk berita
+                     icon = icon("newspaper") #ikon koran untuk berita
                    ),
                    messageItem(
                      from = "Beasiswa",
                      message = "Jelajahi peluang beasiswa!",
-                     icon = icon("money-bill-wave", type = "fas") # Ikon uang untuk beasiswa
+                     icon = icon("money-bill-wave") # Ikon uang untuk beasiswa
                    )
       
       )
@@ -632,7 +636,7 @@ ui <- dashboardPage(
                 tags$li("Destriana Aulia Rifaldi sebagai Back-end Developer"),
                 tags$li("Mauizatun Hasanah sebagai Front-end Developer"),
                 tags$li("Mahda Al Maida sebagai Technical Writer"),
-                tags$li("Yani Prihantini Hiola. sebagai Designer Database"),style = "font-size:17px;"
+                tags$li("Yani Prihantini Hiola. sebagai Database Designer"),style = "font-size:17px;"
               ),
               tags$p("Info lebih lanjut mengenai projek database ini dapat diakses di github pengembang."),
               tags$a(href="https://github.com/mahdaalma/ProjectMDS-2025", "link github")
@@ -645,11 +649,12 @@ ui <- dashboardPage(
     #-----------------FOOTER-----------------#
     
     footer = dashboardFooter(
-      right = "© 2024 Kelompok 2",
+      right = "© Kelompok 2 Manajemen Data Statistika | 2025 | Statistika dan Sains Data",
       
       
     )
   )
+)
 
 # Jalankan Aplikasi
 shinyApp(ui, server)

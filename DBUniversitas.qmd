@@ -182,19 +182,19 @@ con_db <- dbConnect(
 
 ```{r}
 #Universitas
-univ <- read.csv("D:/Kuliah/S2/MDS/git/ProjectMDS-2025/Dataset Kelompok_2/UNIVERSITAS update.csv", stringsAsFactors = FALSE)
+univ <- read.csv("D:/MDS/ProjectMDS-2025/Dataset Kelompok_2/UNIVERSITAS update.csv", stringsAsFactors = FALSE)
 head(univ)  # Cek apakah data terbaca dengan benar
 
 #Jalur Masuk
-jalur_masuk <- read.csv("D:/Kuliah/S2/MDS/git/ProjectMDS-2025/Dataset Kelompok_2/jalur masuk1.csv", stringsAsFactors = FALSE)
+jalur_masuk <- read.csv("D:/MDS/ProjectMDS-2025/Dataset Kelompok_2/jalur_masuk_clean.csv", stringsAsFactors = FALSE)
 head(jalur_masuk)  # Cek apakah data terbaca dengan benar
 
 #Prodi StatHub
-prodi_stathub <- read.csv("D:/Kuliah/S2/MDS/git/ProjectMDS-2025/Dataset Kelompok_2/Prodi StatHub.csv", stringsAsFactors = FALSE)
+prodi_stathub <- read.csv("D:/MDS/ProjectMDS-2025/Dataset Kelompok_2/Prodi StatHub.csv", stringsAsFactors = FALSE)
 head(prodi_stathub)  # Cek apakah data terbaca dengan benar
 
 #Wilayah
-wilayah <- read.csv("D:/Kuliah/S2/MDS/git/ProjectMDS-2025/Dataset Kelompok_2/wilayah.csv", stringsAsFactors = FALSE)
+wilayah <- read.csv("D:/MDS/ProjectMDS-2025/Dataset Kelompok_2/wilayah.csv", stringsAsFactors = FALSE)
 head(wilayah)  # Cek apakah data terbaca dengan benar
 ```
 
@@ -237,9 +237,12 @@ jalur_masuk$id_prodi[i], jalur_masuk$id_univ[i], jalur_masuk$jalur_masuk[i], jal
 dbExecute(con_db, "ALTER TABLE Universitas CHANGE nama_dept nama_univ VARCHAR(150);")
 
 #Ganti Tipe Data
-dbExecute(con_db, "ALTER TABLE Wilayah MODIFY COLUMN id_wilayah FLOAT;")
+dbExecute(con_db, "ALTER TABLE Wilayah MODIFY COLUMN id_wilayah VARCHAR(15);")
 
 #Menghapus semua isi kolom pada tabel tertentu
+dbExecute(con_db, "DELETE FROM Wilayah")
+dbExecute(con_db, "DELETE FROM Universitas")
+dbExecute(con_db, "DELETE FROM prodi_stathub")
 dbExecute(con_db, "DELETE FROM jalur_masuk")
 
 # Menghapus Karakter Tidak Valid
