@@ -4,7 +4,6 @@ format: html
 editor: visual
 ---
 
-
 ```{r}
 #
 # This is the server logic of a Shiny web application. You can run the
@@ -18,8 +17,6 @@ editor: visual
 library(shiny)
 library(DBI)
 ```
-
-
 
 ```{r}
 connectDB <- function() {
@@ -65,7 +62,6 @@ q3<-paste0("
 ```{r}
 DB <- connectDB()
 ```
-
 
 ```{r}
 # Eksekusi query jika koneksi berhasil
@@ -245,6 +241,15 @@ server <- function(input, output) {
              yaxis = list(title = "Daya Tampung", range=c(0,500)))
   })
   
+  # Render DataTable untuk Ditampilkan
+  output$tabel_univ <- DT::renderDataTable({
+    datatable(data_univ(), options = list(pageLength = 10))
+  })
+  
+  # Tutup koneksi database saat aplikasi ditutup
+  onStop(function() {
+    dbDisconnect(con)
+  })
 }
-```
 
+```

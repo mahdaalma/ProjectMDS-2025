@@ -26,8 +26,7 @@ library(shinythemes)
 #)
 #==========================USER INTERFACE (FRONT-END)===============================#
 
-fluidPage(
-  dashboardPage(
+ui <- dashboardPage(
     #---------------------------PART HEADER----------------------------------#
     dashboardHeader(
       title =div(
@@ -651,4 +650,6 @@ fluidPage(
       
     )
   )
-)
+
+# Jalankan Aplikasi
+shinyApp(ui, server)
