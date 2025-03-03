@@ -1,10 +1,3 @@
----
-title: "Backend"
-format: html
-editor: visual
----
-
-```{r}
 #
 # This is the server logic of a Shiny web application. You can run the
 # application by clicking 'Run App' above.
@@ -16,9 +9,9 @@ editor: visual
 
 library(shiny)
 library(DBI)
-```
+library(RMariaDB)
+library(RMySQL)
 
-```{r}
 connectDB <- function() {
   DB <- dbConnect(
     MySQL(),
@@ -29,27 +22,20 @@ connectDB <- function() {
   )
   return(DB)
 }
-```
 
-```{r}
 #----------------------Query1--------------------------#
 q1 <- paste0("
       SELECT w.nama_prov, w.nama_kabkota, u.nama_univ, u.akred_univ, u.qs_rank
       FROM wilayah w
       JOIN universitas u ON w.id_wilayah = u.id_wilayah"
 )
-```
-
-```{r}
 #----------------------Query2--------------------------#
 q2<-paste0("
       SELECT u.nama_univ, p.nama_prodi, p.jumlah_mahasiswa, p.jumlah_dosen, p. akred_prodi, p.jenjang
       FROM universitas u
       JOIN prodi_stathub p ON u.id_univ = p.id_univ"
 )
-```
 
-```{r}
 #----------------------Query3--------------------------#
 q3<-paste0("
       SELECT u.nama_univ, p.nama_prodi, j.jalur_masuk, j.daya_tampung, j.website
@@ -57,13 +43,9 @@ q3<-paste0("
       JOIN prodi_stathub p ON u.id_univ = p.id_univ
       JOIN jalur_masuk j ON p.id_prodi = j.id_prodi"
 )
-```
 
-```{r}
 DB <- connectDB()
-```
 
-```{r}
 # Eksekusi query jika koneksi berhasil
 if (!is.null(DB)) {
   tabel01 <- data.frame(dbGetQuery(DB, q1))
@@ -73,9 +55,7 @@ if (!is.null(DB)) {
 } else {
   message("Koneksi ke database gagal!")
 }
-```
 
-```{r}
 #==========================SERVER(BACK-END)===============================#
 server <- function(input, output) {
   
@@ -85,9 +65,9 @@ server <- function(input, output) {
       inputId = "nama_prov_filter",
       label = "Silakan Pilih Provinsi",
       multiple = TRUE,
-      choices =  tabel01$nama_prov)
+      choices = tabel01$nama_prov)
   })
- 
+  
   data1 <- reactive({
     tabel01 %>% filter(nama_prov %in% input$nama_prov_filter)
   })
@@ -102,7 +82,7 @@ server <- function(input, output) {
       inputId = "nama_univ_filter",
       label = "Silakan Pilih Universitas",
       multiple = FALSE,
-      choices =  tabel02$nama_univ)
+      choices = tabel02$nama_univ)
   })
   
   output$filter_3 <- renderUI({
@@ -120,7 +100,7 @@ server <- function(input, output) {
       inputId = "nama_univ_filter2",
       label = "Silakan Pilih Universitas",
       multiple = FALSE,
-      choices =  tabel02$nama_univ)
+      choices = tabel02$nama_univ)
   })
   
   output$filter_7 <- renderUI({
@@ -132,47 +112,49 @@ server <- function(input, output) {
       choices = sort(unique(tabel02$jenjang[tabel02$nama_univ %in% input$nama_univ_filter2]))
     )
   })
+  
+  # Menyimpan tanggal pencarian untuk universitas
   data_combined <- reactive({
     data2 <- tabel02 %>%
       filter(nama_univ %in% input$nama_univ_filter,
              jenjang %in% input$jenjang_filter) %>%
-      mutate(pencarian = "Hasil Pencarian Anda 1")
+      mutate(tanggal = Sys.Date())  # Menambahkan tanggal pencarian
     
     data4 <- tabel02 %>%
       filter(nama_univ %in% input$nama_univ_filter2,
              jenjang %in% input$jenjang_filter2) %>%
-      mutate(pencarian = "Hasil Pencarian Anda 2")
+      mutate(tanggal = Sys.Date())  # Menambahkan tanggal pencarian
     
     combined_data <- rbind(data2, data4)
     return(combined_data)
   })
   
   output$out_tbl_combined <- renderDataTable({
-    data_combined()
+    datatable(data_combined(), options = list(pageLength = 10))
   })
   
   output$bar_chart1 <- renderPlotly({
     data_filtered <- data_combined()
     
-    plot_ly(data_filtered, x = ~nama_univ, y = ~jumlah_mahasiswa, type = 'bar',color="red",
+    plot_ly(data_filtered, x = ~nama_univ, y = ~jumlah_mahasiswa, type = 'bar', color = "red",
             text = ~jumlah_mahasiswa, 
             insidetextanchor = 'start', 
             insidetextfont = list(color = 'navy')) %>% 
       layout(title = "Jumlah Mahasiswa tiap Universitas",
              xaxis = list(title = "Nama Universitas"),
-             yaxis = list(title = "Jumlah Mahasiswa tiap Universitas", range=c(0,500)))
+             yaxis = list(title = "Jumlah Mahasiswa", range=c(0,500)))
   })
   
   output$bar_chart2 <- renderPlotly({
     data_filtered <- data_combined()
     
-    plot_ly(data_filtered, x = ~nama_univ, y = ~jumlah_dosen, type = 'bar', color="red",
+    plot_ly(data_filtered, x = ~nama_univ, y = ~jumlah_dosen, type = 'bar', color = "red",
             text = ~jumlah_dosen, 
             insidetextanchor = 'start', 
             insidetextfont = list(color = 'navy')) %>% 
       layout(title = "Jumlah Dosen tiap Universitas",
              xaxis = list(title = "Universitas"),
-             yaxis = list(title = "Jumlah Dosen tiap Universitas", range=c(0,500)))
+             yaxis = list(title = "Jumlah Dosen", range=c(0,500)))
   })
   
   #--------------------Tab Daftar------------------#
@@ -181,7 +163,7 @@ server <- function(input, output) {
       inputId = "nama_univ_filter1",
       label = "Silakan Pilih Universitas",
       multiple = FALSE,
-      choices =  tabel03$nama_univ)
+      choices = tabel03$nama_univ)
   })
   
   output$filter_5 <- renderUI({
@@ -192,13 +174,13 @@ server <- function(input, output) {
       choices = sort(unique(tabel03$jalur_masuk[tabel03$nama_univ %in% input$nama_univ_filter1]))
     )
   })
-
+  
   output$filter_8 <- renderUI({
     selectInput(
       inputId = "nama_univ_filter3",
       label = "Silakan Pilih Universitas",
       multiple = FALSE,
-      choices =  tabel03$nama_univ)
+      choices = tabel03$nama_univ)
   })
   
   output$filter_9 <- renderUI({
@@ -210,29 +192,31 @@ server <- function(input, output) {
       choices = sort(unique(tabel03$jalur_masuk[tabel03$nama_univ %in% input$nama_univ_filter3]))
     )
   })
+  
+  # Menyimpan tanggal pencarian untuk daftar universitas
   data_combined2 <- reactive({
     data3 <- tabel03 %>%
       filter(nama_univ %in% input$nama_univ_filter1,
              jalur_masuk %in% input$jalur_filter) %>%
-      mutate(pencarian = "Hasil Pencarian Anda 1")
+      mutate(tanggal = Sys.Date())  # Menambahkan tanggal pencarian
     
     data5 <- tabel03 %>%
       filter(nama_univ %in% input$nama_univ_filter3,
              jalur_masuk %in% input$jalur_filter2) %>%
-      mutate(pencarian = "Hasil Pencarian Anda 2")
+      mutate(tanggal = Sys.Date())  # Menambahkan tanggal pencarian
     
     combined_data2 <- rbind(data3, data5)
     return(combined_data2)
   })
   
   output$out_tbl_combined2 <- renderDataTable({
-    data_combined2()
+    datatable(data_combined2(), options = list(pageLength = 10))
   })
   
   output$bar_chart3 <- renderPlotly({
     data_filtered <- data_combined2()
     
-    plot_ly(data_filtered, x = ~nama_univ, y = ~daya_tampung, type = 'bar',color="red",
+    plot_ly(data_filtered, x = ~nama_univ, y = ~daya_tampung, type = 'bar', color = "red",
             text = ~daya_tampung, 
             insidetextanchor = 'start', 
             insidetextfont = list(color = 'navy')) %>% 
@@ -251,5 +235,3 @@ server <- function(input, output) {
     dbDisconnect(con)
   })
 }
-
-```
