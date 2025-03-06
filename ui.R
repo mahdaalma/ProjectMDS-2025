@@ -37,7 +37,7 @@ ui <- fluidPage(
         img(src = "logo.jpg", height = 60, width = 60),
         
         style = "font-size:28px; color:#ffffff; font-weight:bold; 
-         text-align:center; background-color:#3A6EDB; 
+         text-align:center; background-color:#0047BB; 
          padding:10px; border-radius:8px; box-shadow: 0px 4px 8px rgba(0,0,0,0.2);"
       )
     ),
@@ -91,6 +91,50 @@ ui <- fluidPage(
     
     #------------------------- PART BODY----------------------------------------#
     body = dashboardBody(
+      tags$head(tags$style(HTML("
+    /* Ubah hanya bagian header box */
+    .card-primary:not(.card-outline)>.card-header {
+      background-color: #0047BB !important;
+      color: white !important;
+      border-color: #0047BB !important;
+    }
+    
+    /* Sembunyikan ikon tanda tanya di navbar */
+    .main-header .nav a[href*='adminlte.io/docs'] {
+      display: none !important;
+    }
+
+    /* Pastikan isi box tetap putih */
+    .card-primary {
+      background-color: white !important;
+      color: black !important;
+    }
+
+    /* Ubah warna sidebar */
+    .main-sidebar {
+      background: linear-gradient(180deg, #0A74DA, #1E3A8A) !important; 
+      color: white !important;
+    }
+
+    /* Warna teks di sidebar */
+    .sidebar-menu > li > a {
+      color: white !important;
+      font-size: 15px;
+      font-weight: bold;
+    }
+
+    /* Warna item yang sedang aktif */
+    .sidebar-menu > li.active > a {
+      background-color: #0047BB !important; /* Warna untuk item aktif */
+      color: white !important;
+    }
+
+    /* Warna item sidebar saat hover */
+    .sidebar-menu > li > a:hover {
+      background-color: #002F6C !important; /* Warna lebih gelap untuk efek hover */
+      color: white !important;
+    }
+  "))),
       tabItems(
         #-------------------------Tab Beranda-------------------------#
         tabItem(
@@ -274,7 +318,7 @@ ui <- fluidPage(
           tags$br(),
           
           box(
-            title = "Cari Perguruan Tinggi berdasarkan Provinsi",solidHeader = TRUE,status="primary",
+            title = "Cari universitas berdasarkan Provinsi",solidHeader = TRUE,status="primary",
             uiOutput("filter_1"),
             width = 12
           ),
@@ -721,7 +765,7 @@ ui <- fluidPage(
                        ),
                        div(
                          style = "text-align: center; padding: 15px;",
-                         img(src = "destriana.jpg", height = 180, width = 180, 
+                         img(src = "destri.jpeg", height = 180, width = 180, 
                              style="border-radius: 8px; display: block; margin: auto;"),
                          tags$p("Destriana Aulia Rifaldi", 
                                 style="text-align:center; font-weight:bold; margin-top:10px;")
@@ -740,7 +784,7 @@ ui <- fluidPage(
                        ),
                        div(
                          style = "text-align: center; padding: 15px;",
-                         img(src = "mauizatun.jpg", height = 180, width = 180, 
+                         img(src = "iza.jpg", height = 180, width = 180, 
                              style="border-radius: 8px; display: block; margin: auto;"),
                          tags$p("Mauizatun Hasanah", 
                                 style="text-align:center; font-weight:bold; margin-top:10px;")
