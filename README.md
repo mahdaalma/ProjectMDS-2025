@@ -21,10 +21,10 @@
 
 - [Tentang](#notebook-tentang)
 - [INFO](#bookmark_tabs-INFO)
-- [Palet Warna](#abacus-palet_warna)
-- [User Flow](#userflow)
-- [Wireframe](#wireframe)
-- [Alur Wireframe](#alur)
+- [Palet Warna](#desktop_computer-palet-warna)
+- [User Flow](##desktop_computer-user-flow)
+- [Wireframe](##desktop_computer-wireframe)
+- [Alur Wireframe](#desktop_computer-alur-wireframe)
 - [Dashboard Database](#desktop_computer-dashboard-database)
 - [Demo](#octocat-demo)
 - [Requirements](#exclamation-requirements)
@@ -95,7 +95,7 @@ kesempatan untuk memilih kampus terbaik yang sesuai dengan passion dan
 karier impianmu. **Cek Statlink sekarang dan jadilah bagian dari
 generasi ahli data masa depan! 🚀🌍**
 
-## :abacus: Palet Warna 
+## :desktop_computer: Palet Warna 
 
 Salah satu elemen penting dalam desain adalah pemilihan warna yang tepat. Palet warna yang digunakan dalam StatLink dirancang untuk memberikan tampilan yang profesional, bersih, dan nyaman di mata pengguna.
 
@@ -105,7 +105,7 @@ Salah satu elemen penting dalam desain adalah pemilihan warna yang tepat. Palet 
 
 Dengan kombinasi warna yang harmonis, StatLink diharapkan dapat memberikan pengalaman yang menyenangkan saat digunakan.
 
-## 🛤  User Flow 
+## :desktop_computer: User Flow 
 
 Sebelum masuk ke tahap pengembangan, kami terlebih dahulu menentukan **alur pengguna (user flow)** untuk memahami bagaimana pengguna akan berinteraksi dengan aplikasi. 
 
@@ -115,7 +115,7 @@ Sebelum masuk ke tahap pengembangan, kami terlebih dahulu menentukan **alur peng
 
 Diagram ini membantu tim dalam merancang fitur yang lebih intuitif, memudahkan navigasi, dan mengoptimalkan pengalaman pengguna saat menggunakan StatLink.
 
-## 🛤  Wireframe
+## :desktop_computer: Wireframe
 
 Tahap awal dalam pengembangan antarmuka adalah dengan membuat **wireframe**, yaitu rancangan sederhana yang menggambarkan tata letak dan elemen-elemen utama di aplikasi. 
 
@@ -127,7 +127,7 @@ Tahap awal dalam pengembangan antarmuka adalah dengan membuat **wireframe**, yai
   <img width="900" height="550" src="images/StatLink Wireframe 2.png">
 </p>
 
-## 🛤  Alur Wireframe
+## :desktop_computer: Alur Wireframe
 
 Setelah wireframe dibuat, langkah berikutnya adalah menentukan **alur navigasi antar halaman**. Diagram ini menunjukkan bagaimana setiap halaman terhubung dan bagaimana pengguna akan berpindah dari satu bagian ke bagian lainnya dalam aplikasi 
 
