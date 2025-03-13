@@ -6,7 +6,6 @@
 #
 #    http://shiny.rstudio.com/
 #
-
 library(shiny)
 library(DBI)
 library(RMariaDB)
@@ -73,7 +72,9 @@ server <- function(input, output) {
   })
   
   output$out_tbl1 <- renderDataTable({
-    data1()
+    datatable(data1(), 
+              options = list(pageLength = 10), 
+              colnames = c("Nama Provinsi", "Nama Kabupaten/Kota", "Nama Universitas", "Akreditasi Universitas", "QS Rank"))
   })
   
   #----------------Tab Cari Univ------------------#
@@ -113,48 +114,53 @@ server <- function(input, output) {
     )
   })
   
-  # Menyimpan tanggal pencarian untuk universitas
   data_combined <- reactive({
     data2 <- tabel02 %>%
       filter(nama_univ %in% input$nama_univ_filter,
-             jenjang %in% input$jenjang_filter) %>%
-      mutate(tanggal = Sys.Date())  # Menambahkan tanggal pencarian
+             jenjang %in% input$jenjang_filter)
     
     data4 <- tabel02 %>%
       filter(nama_univ %in% input$nama_univ_filter2,
-             jenjang %in% input$jenjang_filter2) %>%
-      mutate(tanggal = Sys.Date())  # Menambahkan tanggal pencarian
+             jenjang %in% input$jenjang_filter2)
     
-    combined_data <- rbind(data2, data4)
-    return(combined_data)
+    combined_data <- rbind(data2, data4)  # Gabungkan data2 dan data4
+    return(combined_data)  # Kembalikan data yang sudah digabung
   })
   
   output$out_tbl_combined <- renderDataTable({
-    datatable(data_combined(), options = list(pageLength = 10))
+    datatable(data_combined(), 
+              options = list(pageLength = 10), 
+              colnames = c("Nama Universitas", "Nama Program Studi", "Jumlah Mahasiswa", "Jumlah Dosen", "Akreditasi Prodi", "Jenjang"))
   })
   
   output$bar_chart1 <- renderPlotly({
     data_filtered <- data_combined()
     
-    plot_ly(data_filtered, x = ~nama_univ, y = ~jumlah_mahasiswa, type = 'bar', color = "red",
+    plot_ly(data_filtered, x = ~nama_univ, y = ~jumlah_mahasiswa, type = 'bar', 
+            marker = list(color = 'blue'),  # Warna batang grafik
             text = ~jumlah_mahasiswa, 
-            insidetextanchor = 'start', 
-            insidetextfont = list(color = 'navy')) %>% 
-      layout(title = "Jumlah Mahasiswa tiap Universitas",
-             xaxis = list(title = "Nama Universitas"),
-             yaxis = list(title = "Jumlah Mahasiswa", range=c(0,500)))
+            textposition = 'inside',
+            textfont = list(color = 'white', size = 14)) %>%  # Warna dan ukuran teks
+      layout(title = list(text = "Jumlah Mahasiswa tiap Universitas", font = list(color = 'black', size = 18)),
+             xaxis = list(title = "Nama Universitas", tickfont = list(color = 'black', size = 12)),
+             yaxis = list(title = "Jumlah Mahasiswa", range = c(0,500), tickfont = list(color = 'black', size = 12)),
+             plot_bgcolor = 'rgba(0,0,0,0)',  # Latar belakang transparan
+             paper_bgcolor = 'rgba(0,0,0,0)')  # Latar belakang transparan
   })
   
   output$bar_chart2 <- renderPlotly({
     data_filtered <- data_combined()
     
-    plot_ly(data_filtered, x = ~nama_univ, y = ~jumlah_dosen, type = 'bar', color = "red",
+    plot_ly(data_filtered, x = ~nama_univ, y = ~jumlah_dosen, type = 'bar', 
+            marker = list(color = 'green'),  # Warna batang grafik
             text = ~jumlah_dosen, 
-            insidetextanchor = 'start', 
-            insidetextfont = list(color = 'navy')) %>% 
-      layout(title = "Jumlah Dosen tiap Universitas",
-             xaxis = list(title = "Universitas"),
-             yaxis = list(title = "Jumlah Dosen", range=c(0,500)))
+            textposition = 'inside',
+            textfont = list(color = 'white', size = 14)) %>%  # Warna dan ukuran teks
+      layout(title = list(text = "Jumlah Dosen tiap Universitas", font = list(color = 'black', size = 18)),
+             xaxis = list(title = "Universitas", tickfont = list(color = 'black', size = 12)),
+             yaxis = list(title = "Jumlah Dosen", range = c(0,500), tickfont = list(color = 'black', size = 12)),
+             plot_bgcolor = 'rgba(0,0,0,0)',  # Latar belakang transparan
+             paper_bgcolor = 'rgba(0,0,0,0)')  # Latar belakang transparan
   })
   
   #--------------------Tab Daftar------------------#
@@ -197,32 +203,43 @@ server <- function(input, output) {
   data_combined2 <- reactive({
     data3 <- tabel03 %>%
       filter(nama_univ %in% input$nama_univ_filter1,
-             jalur_masuk %in% input$jalur_filter) %>%
-      mutate(tanggal = Sys.Date())  # Menambahkan tanggal pencarian
+             jalur_masuk %in% input$jalur_filter)  # Hapus mutate
     
     data5 <- tabel03 %>%
       filter(nama_univ %in% input$nama_univ_filter3,
-             jalur_masuk %in% input$jalur_filter2) %>%
-      mutate(tanggal = Sys.Date())  # Menambahkan tanggal pencarian
+             jalur_masuk %in% input$jalur_filter2)  # Hapus mutate
     
     combined_data2 <- rbind(data3, data5)
     return(combined_data2)
   })
   
   output$out_tbl_combined2 <- renderDataTable({
-    datatable(data_combined2(), options = list(pageLength = 10))
-  })
-  
+    datatable(data_combined2(), 
+              options = list(pageLength = 10),
+              colnames = c("Nama Universitas", 
+                           "Nama Program Studi", 
+                           "Jalur Masuk", 
+                           "Daya Tampung", 
+                           "Website Pendaftaran"))
+  })  
   output$bar_chart3 <- renderPlotly({
-    data_filtered <- data_combined2()
+    req(data_combined2())  # Pastikan ada data sebelum diproses
     
-    plot_ly(data_filtered, x = ~nama_univ, y = ~daya_tampung, type = 'bar', color = "red",
+    data_filtered <- data_combined2() %>%
+      group_by(nama_univ) %>%
+      summarise(daya_tampung = sum(daya_tampung, na.rm = TRUE))  # Menjumlahkan daya tampung tiap universitas
+    
+    # Pastikan tidak terjadi error jika data kosong
+    max_range <- ifelse(nrow(data_filtered) > 0, max(data_filtered$daya_tampung) + 50, 100)
+    
+    plot_ly(data_filtered, x = ~nama_univ, y = ~daya_tampung, type = 'bar', 
+            marker = list(color = 'orange'),  # Ubah warna batang
             text = ~daya_tampung, 
-            insidetextanchor = 'start', 
-            insidetextfont = list(color = 'navy')) %>% 
+            textposition = 'outside', 
+            insidetextfont = list(color = 'black')) %>% 
       layout(title = "Daya Tampung Universitas",
              xaxis = list(title = "Universitas"),
-             yaxis = list(title = "Daya Tampung", range=c(0,500)))
+             yaxis = list(title = "Daya Tampung", range = c(0, max_range)))  # Sesuaikan skala
   })
   
   # Render DataTable untuk Ditampilkan
