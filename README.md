@@ -227,11 +227,11 @@ Provinsi tempat universitas tersebut berada.
 
 Berikut adalah deskripsi dari setiap atribut dalam tabel Wilayah:
 
-| Attribute    | Type                  | Description   |
-|:-------------|:----------------------|:--------------|
-| id_wilayah   | character varying(10) | Id Wilayah    |
-| nama_kabkota | character varying(50) | Nama Kab/Kota |
-| nama_prov    | character varying(50) | Nama Provinsi |
+| Attribute    | Type                   | Description   |
+|:-------------|:-----------------------|:--------------|
+| id_wilayah   | character varying(15)  | Id Wilayah    |
+| nama_kabkota | character varying(100) | Nama Kab/Kota |
+| nama_prov    | character varying(100) | Nama Provinsi |
 
 dengan script SQL sebagai berikut:
 
@@ -254,13 +254,13 @@ Akreditasi Universitas.
 
 Berikut adalah deskripsi dari setiap atribut dalam tabel Universitas:
 
-| Attribute  | Type                  | Description            |
-|:-----------|:----------------------|:-----------------------|
-| id_univ    | integer               | Id Universitas         |
-| id_wilayah | character varying(10) | Id Wilayah             |
-| nama_univ  | character varying(50) | Nama Universitas       |
-| akred_univ | character varying(10) | Akreditasi Universitas |
-
+| Attribute  | Type                   | Description            |
+|:-----------|:-----------------------|:-----------------------|
+| id_univ    | integer                | Id Universitas         |
+| id_wilayah | character varying(15)  | Id Wilayah             |
+| nama_univ  | character varying(150) | Nama Universitas       |
+| akred_univ | character varying(50)  | Akreditasi Universitas |
+| QS_Rank    | character varying(50)  | QS Ranking             |
 dengan script SQL sebagai berikut:
 
 ``` sql
@@ -283,15 +283,15 @@ Mahasiswa, Akreditasi Program Studi, serta Jenjang Pendidikan.
 
 Berikut adalah deskripsi dari setiap atribut dalam tabel Prodi:
 
-| Attribute        | Type                  | Description        |
-|:-----------------|:----------------------|:-------------------|
-| id_prodi         | integer               | Id prodi           |
-| id_univ          | integer               | Id universitas     |
-| nama_prodi       | character varying(50) | Nama program studi |
-| jumlah_dosen     | integer               | Jumlah dosen       |
-| jumlah_mahasiswa | integer               | Jumlah mahasiswa   |
-| akred_prodi      | character varying(30) | Akreditasi prodi   |
-| jenjang          | character varying(10) | Jenjang pendidikan |
+| Attribute        | Type                   | Description        |
+|:-----------------|:-----------------------|:-------------------|
+| id_prodi         | integer                | Id prodi           |
+| id_univ          | integer                | Id universitas     |
+| nama_prodi       | character varying(150) | Nama program studi |
+| jumlah_dosen     | integer                | Jumlah dosen       |
+| jumlah_mahasiswa | integer                | Jumlah mahasiswa   |
+| akred_prodi      | character varying(50)  | Akreditasi prodi   |
+| jenjang          | character varying(10)  | Jenjang pendidikan |
 
 dengan script SQL sebagai berikut:
 
@@ -350,13 +350,14 @@ universitas.
 Tabel ini mencakup informasi spesifik seperti id program studi, id
 universitas, jenis jalur masuk, daya tampung, dan website pendaftaran.
 Berikut adalah deskripsi untuk setiap atribut dalam tabel Jalur. 
-| Attribute                  | Type                   | Description                     	  |
-|:---------------------------|:-----------------------|:------------------------------------|
-| id_prodi                   | integer                | Id Prodi                       		  |
-| id_univ                    | integer                | Id Universitas                      |
-| jalur_masuk                | character varying(100) | Jalur Masuk                    		  |	
-| daya_tampung               | integer                | Daya Tampung                      	|
-| website                    | character varying(1000)| Website                             |
+| Attribute        | Type                   | Description    |
+|:-----------------|:-----------------------|:---------------|
+| id_univ          | integer                | Id Universitas |
+| id_prodi         | integer                | Id Prodi       |
+| website          | character varying(255) | Website        |	
+| jalur_masuk      | character varying(100) | Jalur Masuk    |
+| daya_tampung     | integer                | Daya Tampung   |
+
 
 dengan script SQL sebagai berikut:
 
@@ -376,25 +377,13 @@ CREATE TABLE IF NOT EXISTS Jalur_Masuk (
 
 ```         
 .
-├── app           # ShinyApps
-│   ├── server.R
-│   └── ui.R
+├── app  #ShinyApp       
 │
 ├── data 
-│   ├── Prodi StatHub.csv
-│   ├── UNIVERSITAS update.csv
-│   ├── jalur_masuk_clean.csv
-|   └── wilayah.csv
-│
-├── image
-│   ├── ERD.jpeg
-│   ├── dashboard.png
-│   ├── logo StatHub.png
-|   └── skema2.png
 │   
-├── src     # Project source code
-│   ├── conn_elephantsql.R
-|   └── input data SQL StatHub.R
+├── image
+│   
+├── src     
 | 
 └── README.md
 ```
