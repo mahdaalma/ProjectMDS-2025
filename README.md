@@ -26,7 +26,6 @@
 - [Wireframe](#desktop_computer-wireframe)
 - [Alur Wireframe](#desktop_computer-alur-wireframe)
 - [Dashboard Database](#desktop_computer-dashboard-database)
-- [Demo](#octocat-demo)
 - [Requirements](#exclamation-requirements)
 - [Skema Database](#film_strip-skema-database)
 - [ERD](#chart_with_downwards_trend-erd)
