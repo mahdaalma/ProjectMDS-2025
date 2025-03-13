@@ -96,9 +96,7 @@ generasi ahli data masa depan! 🚀🌍**
 Berikut merupakan tampilan awal dari Portal StatHub Database
 
 <p align="center">
-
-<img src="image/dashboard1.png" width="900" height="450"/>
-
+  <img width="900" height="450" src="images/tampilan_dashboard.jpeg">
 </p>
 
 ## :octocat: Demo 
@@ -116,9 +114,7 @@ dapat terorganisir dengan baik.
 Berikut adalah skema database dari **Portal StatLink** : Database
 
 <p align="center">
-
-<img src="image/skema_MDS.jpg" width="600" height="400"/>
-
+  <img width="600" height="400" src="images/Skema Database.png">
 </p>
 
 ## :exclamation: Requirements 
@@ -144,9 +140,7 @@ id_prodi, yang menunjukkan hubungan antara program studi dengan jalur
 penerimaan mahasiswa.
 
 <p align="center">
-
-<img src="image/ERD.jpeg" width="350" height="650"/>
-
+  <img width="600" height="500" src="images/ERD.png">
 </p>
 
 ## :postbox: Deskripsi Data 
