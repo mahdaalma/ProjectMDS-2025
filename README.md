@@ -145,11 +145,6 @@ Berikut merupakan tampilan awal dari Portal StatHub Database
   <img width="900" height="450" src="images/tampilan_dashboard.jpeg">
 </p>
 
-## :octocat: Demo 
-
-Berikut merupakan link untuk shinnyapps atau dashboard dari project
-kami: <https://rizkyardhani01.shinyapps.io/StatHub_Kel2MDS/>
-
 ## :film_strip: Skema Database 
 
 Struktur Primary Key dan Foreign Key digunakan untuk membangun hubungan
