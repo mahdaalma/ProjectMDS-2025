@@ -21,6 +21,10 @@
 
 - [Tentang](#notebook-tentang)
 - [INFO](#bookmark_tabs-INFO)
+- [Palet Warna](#palet)
+- [User Flow](#userflow)
+- [Wireframe](#wireframe)
+- [Alur Wireframe](#alur)
 - [Dashboard Database](#desktop_computer-dashboard-database)
 - [Demo](#octocat-demo)
 - [Requirements](#exclamation-requirements)
@@ -91,15 +95,7 @@ kesempatan untuk memilih kampus terbaik yang sesuai dengan passion dan
 karier impianmu. **Cek Statlink sekarang dan jadilah bagian dari
 generasi ahli data masa depan! 🚀🌍**
 
-## :desktop_computer: Dashboard Database 
-
-Berikut merupakan tampilan awal dari Portal StatHub Database
-
-<p align="center">
-  <img width="900" height="450" src="images/tampilan_dashboard.jpeg">
-</p>
-
-## 🎨 : Palet Warna 
+## 🏁 Palet Warna 
 
 Salah satu elemen penting dalam desain adalah pemilihan warna yang tepat. Palet warna yang digunakan dalam StatLink dirancang untuk memberikan tampilan yang profesional, bersih, dan nyaman di mata pengguna.
 
@@ -109,17 +105,17 @@ Salah satu elemen penting dalam desain adalah pemilihan warna yang tepat. Palet 
 
 Dengan kombinasi warna yang harmonis, StatLink diharapkan dapat memberikan pengalaman yang menyenangkan saat digunakan.
 
-## 🛤 : User Flow 
+## 🛤  User Flow 
 
 Sebelum masuk ke tahap pengembangan, kami terlebih dahulu menentukan **alur pengguna (user flow)** untuk memahami bagaimana pengguna akan berinteraksi dengan aplikasi. 
 
 <p align="center">
-  <img width="900" height="450" src="images/StatLink Userflow 2.png">
+  <img width="900" height="550" src="images/StatLink Userflow 2.png">
 </p>
 
 Diagram ini membantu tim dalam merancang fitur yang lebih intuitif, memudahkan navigasi, dan mengoptimalkan pengalaman pengguna saat menggunakan StatLink.
 
-## 🛤 : Wireframe
+## 🛤  Wireframe
 
 Tahap awal dalam pengembangan antarmuka adalah dengan membuat **wireframe**, yaitu rancangan sederhana yang menggambarkan tata letak dan elemen-elemen utama di aplikasi. 
 
@@ -131,7 +127,7 @@ Tahap awal dalam pengembangan antarmuka adalah dengan membuat **wireframe**, yai
   <img width="900" height="550" src="images/StatLink Wireframe 2.png">
 </p>
 
-## 🛤 : Alur Wireframe
+## 🛤  Alur Wireframe
 
 Setelah wireframe dibuat, langkah berikutnya adalah menentukan **alur navigasi antar halaman**. Diagram ini menunjukkan bagaimana setiap halaman terhubung dan bagaimana pengguna akan berpindah dari satu bagian ke bagian lainnya dalam aplikasi 
 
@@ -140,6 +136,14 @@ Setelah wireframe dibuat, langkah berikutnya adalah menentukan **alur navigasi a
 </p>
 
 Dengan perancangan alur yang jelas, pengembangan aplikasi bisa berjalan lebih lancar dan efisien, serta memastikan pengguna mendapatkan pengalaman yang seamless saat menggunakan StatLink.
+
+## :desktop_computer: Dashboard Database 
+
+Berikut merupakan tampilan awal dari Portal StatHub Database
+
+<p align="center">
+  <img width="900" height="450" src="images/tampilan_dashboard.jpeg">
+</p>
 
 ## :octocat: Demo 
 
