@@ -335,10 +335,10 @@ CREATE TABLE IF NOT EXISTS Jalur_Masuk (
 │   └── ui.R
 │
 ├── data 
-│   ├── Prodi.csv
-│   ├── jalur_masuk.csv
-│   ├── universitas_StatHub.csv
-|   └── wilayah_StatHub.csv
+│   ├── Prodi StatHub.csv
+│   ├── UNIVERSITAS update.csv
+│   ├── jalur_masuk_clean.csv
+|   └── wilayah.csv
 │
 ├── image
 │   ├── ERD.jpeg
