@@ -12,8 +12,7 @@
 [Tentang](#notebook-tentang)
 •
 [Dashboard Database](#desktop_computer-dashboard-database)
-•
-[Demo](#octocat-demo)
+
 
 </div>
 
