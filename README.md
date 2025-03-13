@@ -1,36 +1,33 @@
----
-editor_options: 
-  markdown: 
-    wrap: 72
----
-
 <p align="center">
-
-<img src="image/logo StatHub.png" width="350" height="350"/>
-
+  <img width="350" height="350" src="www/logo.JPG">
 </p>
 
-::: {align="center"}
-# StatHub Database : Portal Jurusan Statistika di Indonesia
+<div align="center">
+  
+#  StatLink Database : Portal Jurusan Statistika di Indonesia
 
-[Tentang](#notebook-tentang) • [Dashboard
-Database](#desktop_computer-dashboard-database) • [Demo](#octocat-demo)
-:::
+[Tentang](#notebook-tentang)
+•
+[Dashboard Database](#desktop_computer-dashboard-database)
+•
+[Demo](#octocat-demo)
+
+</div>
 
 ## :bookmark_tabs: Menu
 
--   [Tentang](#notebook-tentang)
--   [INFO](#bookmark_tabs-INFO)
--   [Dashboard Database](#desktop_computer-dashboard-database)
--   [Demo](#octocat-demo)
--   [Requirements](#exclamation-requirements)
--   [Skema Database](#film_strip-skema-database)
--   [ERD](#chart_with_downwards_trend-erd)
--   [Deskripsi Data](#postbox-deskripsi-data)
--   [Struktur Folder](#open_file_folder-struktur-folder)
--   [Tim Pengembang](#ninja-tim-pengembang)
+- [Tentang](#notebook-tentang)
+- [INFO](#bookmark_tabs-INFO)
+- [Dashboard Database](#desktop_computer-dashboard-database)
+- [Demo](#octocat-demo)
+- [Requirements](#exclamation-requirements)
+- [Skema Database](#film_strip-skema-database)
+- [ERD](#chart_with_downwards_trend-erd)
+- [Deskripsi Data](#postbox-deskripsi-data)
+- [Struktur Folder](#open_file_folder-struktur-folder)
+- [Tim Pengembang](#ninja-tim-pengembang)
 
-## :notebook: Tentang {#notebook-tentang}
+## :notebook: Tentang 
 
 <div align="justify">
 
@@ -68,7 +65,7 @@ scientist, aktuaris, dan masih banyak lagi! 📈
 **Kemampuan Berpikir Kritis & Problem Solving** – Skill yang berguna
 untuk karier dan kehidupan sehari-hari.
 
-### :bookmark_tabs: INFO {#bookmark_tabs-info}
+### :bookmark_tabs: INFO 
 
 **Temukan Kampus Statistika Terbaik di Statlink!** 🚀
 
@@ -91,7 +88,7 @@ kesempatan untuk memilih kampus terbaik yang sesuai dengan passion dan
 karier impianmu. **Cek Statlink sekarang dan jadilah bagian dari
 generasi ahli data masa depan! 🚀🌍**
 
-## :desktop_computer: Dashboard Database {#desktop_computer-dashboard-database}
+## :desktop_computer: Dashboard Database 
 
 Berikut merupakan tampilan awal dari Portal StatHub Database
 
@@ -101,19 +98,19 @@ Berikut merupakan tampilan awal dari Portal StatHub Database
 
 </p>
 
-## :octocat: Demo {#octocat-demo}
+## :octocat: Demo 
 
 Berikut merupakan link untuk shinnyapps atau dashboard dari project
 kami: <https://rizkyardhani01.shinyapps.io/StatHub_Kel2MDS/>
 
-## :film_strip: Skema Database {#film_strip-skema-database}
+## :film_strip: Skema Database 
 
 Struktur Primary Key dan Foreign Key digunakan untuk membangun hubungan
 antara tabel Wilayah, Universitas, Program Studi, dan Jalur Masuk dalam
 database. Relasi ini memastikan keterkaitan antar entitas sehingga data
 dapat terorganisir dengan baik.
 
-Berikut adalah skema database dari **Portal StatHub** : Database
+Berikut adalah skema database dari **Portal StatLink** : Database
 
 <p align="center">
 
@@ -121,7 +118,7 @@ Berikut adalah skema database dari **Portal StatHub** : Database
 
 </p>
 
-## :exclamation: Requirements {#exclamation-requirements}
+## :exclamation: Requirements 
 
 -   Sistem RDBMS yang digunakan dalam proyek ini adalah PostgreSQL dan
     ElephantSQL.
@@ -129,7 +126,7 @@ Berikut adalah skema database dari **Portal StatHub** : Database
     shinythemes, bs4Dash, DT, dan dplyr, untuk memastikan tampilan yang
     interaktif dan fungsional.
 
-## :chart_with_downwards_trend: ERD {#chart_with_downwards_trend-erd}
+## :chart_with_downwards_trend: ERD 
 
 ERD (Entity Relationship Diagram) menggambarkan hubungan antara entitas
 dan atribut dalam sistem. Pada proyek ini, Wilayah memiliki atribut
@@ -149,7 +146,7 @@ penerimaan mahasiswa.
 
 </p>
 
-## :postbox: Deskripsi Data {#postbox-deskripsi-data}
+## :postbox: Deskripsi Data 
 
 Statlink adalah portal database yang menyediakan informasi lengkap
 mengenai universitas negeri di Indonesia yang memiliki jurusan
@@ -171,12 +168,12 @@ Database STATLINK menyimpan informasi yang mewakili atribut data yang
 saling berhubungan untuk kemudian dianalisis.
 
 ``` sql
-CREATE DATABASE portal_StatHub 
-    WITH
-    OWNER = postgres
-    ENCODING = 'UTF8'
-    CONNECTION LIMIT = -1
-    IS_TEMPLATE = False;
+tryCatch({
+  dbExecute(con, glue("CREATE DATABASE IF NOT EXISTS {db_config$dbname}"))
+  message("Database ", db_config$dbname, " berhasil dibuat/ditemukan")
+ }, error = function(e) {
+  message("Gagal membuat database: ", e$message)
+ })
 ```
 
 ### Create Table Wilayah
@@ -197,9 +194,9 @@ dengan script SQL sebagai berikut:
 
 ``` sql
 CREATE TABLE IF NOT EXISTS wilayah (
-    id_wilayah CHAR(10) PRIMARY KEY,
-    nama_kabkota VARCHAR(50) NOT NULL,
-    nama_prov VARCHAR(50) NOT NULL
+    id_wilayah CHAR(15) NOT NULL PRIMARY KEY,
+    nama_kabkota VARCHAR(100) NOT NULL,
+    nama_prov VARCHAR(100) NOT NULL
 );
 
 select * from wilayah
@@ -224,14 +221,14 @@ Berikut adalah deskripsi dari setiap atribut dalam tabel Universitas:
 dengan script SQL sebagai berikut:
 
 ``` sql
-CREATE TABLE IF NOT EXISTS universitas (
-    id_univ int PRIMARY KEY,
-    id_wilayah CHAR(10) NOT NULL,
-    nama_univ VARCHAR(50) NOT NULL,
-    akred_univ VARCHAR(10) NOT NULL,
-    FOREIGN KEY (id_wilayah) REFERENCES wilayah(id_wilayah)
-);
-select * from universitas
+CREATE TABLE IF NOT EXISTS Universitas (
+      id_univ INT AUTO_INCREMENT PRIMARY KEY,
+      id_wilayah VARCHAR(15) NOT NULL,
+      nama_univ VARCHAR(150),
+      akred_univ VARCHAR(50),
+      qs_rank VARCHAR(50),
+      FOREIGN KEY (id_wilayah) REFERENCES Wilayah(id_wilayah)
+    )
 ```
 
 ### Create Table Prodi
@@ -256,16 +253,16 @@ Berikut adalah deskripsi dari setiap atribut dalam tabel Prodi:
 dengan script SQL sebagai berikut:
 
 ``` sql
-CREATE TABLE IF NOT EXISTS prodi (
-    id_prodi int PRIMARY KEY,
-    id_univ int NOT NULL,
-    nama_prodi VARCHAR(50) NOT NULL,
-    jumlah_dosen int NOT NULL,
-    jumlah_mahasiswa int NOT NULL,
-    akred_prodi VARCHAR(30) NOT NULL,
-    jenjang VARCHAR(10) NOT NULL,
-    FOREIGN KEY (id_univ) REFERENCES universitas (id_univ)
-);
+CREATE TABLE IF NOT EXISTS Prodi_StatHub (
+      id_prodi INT AUTO_INCREMENT PRIMARY KEY,
+      id_univ INT,
+      nama_prodi VARCHAR(150),
+      jumlah_dosen INT,
+      jumlah_mahasiswa INT,
+      akred_prodi VARCHAR(50),
+      jenjang VARCHAR(10),
+      FOREIGN KEY (id_univ) REFERENCES Universitas(id_univ)
+    );
 ```
 
 Penilaian Peringkat Akreditasi Program Studi berdasarkan:
@@ -309,29 +306,30 @@ universitas.
 
 Tabel ini mencakup informasi spesifik seperti id program studi, id
 universitas, jenis jalur masuk, daya tampung, dan website pendaftaran.
-Berikut adalah deskripsi untuk setiap atribut dalam tabel Jalur. \|
-Attribute \| Type \| Description \|
-\|:---------------------------\|:-----------------------\|:----------------------\|
-\| id_prodi \| integer \| Id Prodi \| \| id_univ \| integer \| Id
-Universitas \| \| jalur_masuk \| character varying(100) \| Jalur Masuk
-\| \| daya_tampung \| integer \| Daya Tampung \| \| website \| character
-varying(1000)\| Website \|
+Berikut adalah deskripsi untuk setiap atribut dalam tabel Jalur. 
+| Attribute                  | Type                   | Description                     	  |
+|:---------------------------|:-----------------------|:------------------------------------|
+| id_prodi                   | integer                | Id Prodi                       		  |
+| id_univ                    | integer                | Id Universitas                      |
+| jalur_masuk                | character varying(100) | Jalur Masuk                    		  |	
+| daya_tampung               | integer                | Daya Tampung                      	|
+| website                    | character varying(1000)| Website                             |
 
 dengan script SQL sebagai berikut:
 
 ``` sql
-CREATE TABLE IF NOT EXISTS jalur (
-    id_prodi int NULL,
-    id_univ int NOT NULL,
-    jalur_masuk VARCHAR(100) NOT NULL,
-    daya_tampung int NOT NULL,
-    website VARCHAR(1000) NOT NULL,
-    FOREIGN KEY (id_prodi) REFERENCES prodi (id_prodi),
-    FOREIGN KEY (id_univ) REFERENCES universitas (id_univ),
-);
+CREATE TABLE IF NOT EXISTS Jalur_Masuk (
+      id_prodi INT,
+      id_univ INT,
+      jalur_masuk VARCHAR(100),
+      daya_tampung INT,
+      website VARCHAR(255),
+      FOREIGN KEY (id_prodi) REFERENCES Prodi_StatHub(id_prodi),
+      FOREIGN KEY (id_univ) REFERENCES Universitas(id_univ)
+    );
 ```
 
-## :open_file_folder: Struktur Folder {#open_file_folder-struktur-folder}
+## :open_file_folder: Struktur Folder 
 
 ```         
 .
@@ -358,7 +356,7 @@ CREATE TABLE IF NOT EXISTS jalur (
 └── README.md
 ```
 
-## :ninja: Tim Pengembang {#ninja-tim-pengembang}
+## :ninja: Tim Pengembang 
 
 -   💃Database Manager : [Logananta Puja
     Kusuma](https://github.com/logankusuma) (M0501241028)
