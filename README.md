@@ -70,8 +70,8 @@ untuk karier dan kehidupan sehari-hari.
 **Temukan Kampus Statistika Terbaik di Statlink!** 🚀
 
 **Statlink** adalah portal informasi paling lengkap untuk jurusan
-Statistika di Indonesia! Dengan berbagai pilihan perguruan tinggi—mulai
-dari Universitas, Institut, hingga Sekolah Tinggi—Statlink membantumu
+Statistika di Indonesia! Dengan berbagai pilihan perguruan tinggi mulai
+dari Universitas, Institut, hingga Sekolah Tinggi Statlink membantumu
 menemukan kampus terbaik untuk jenjang Sarjana (S1), Magister (S2),
 hingga Doktor (S3).
 
