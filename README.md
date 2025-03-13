@@ -21,7 +21,7 @@
 
 - [Tentang](#notebook-tentang)
 - [INFO](#bookmark_tabs-INFO)
-- [Palet Warna](#palet)
+- [Palet Warna](#abacus-palet_warna)
 - [User Flow](#userflow)
 - [Wireframe](#wireframe)
 - [Alur Wireframe](#alur)
@@ -95,7 +95,7 @@ kesempatan untuk memilih kampus terbaik yang sesuai dengan passion dan
 karier impianmu. **Cek Statlink sekarang dan jadilah bagian dari
 generasi ahli data masa depan! 🚀🌍**
 
-## 🏁 Palet Warna 
+## :abacus: Palet Warna 
 
 Salah satu elemen penting dalam desain adalah pemilihan warna yang tepat. Palet warna yang digunakan dalam StatLink dirancang untuk memberikan tampilan yang profesional, bersih, dan nyaman di mata pengguna.
 
