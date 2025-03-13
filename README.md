@@ -158,8 +158,7 @@ Berikut adalah skema database dari **Portal StatLink** : Database
 
 ## :exclamation: Requirements 
 
--   Sistem RDBMS yang digunakan dalam proyek ini adalah PostgreSQL dan
-    ElephantSQL.
+-   Sistem RDBMS yang digunakan dalam proyek ini adalah PostgreSQL yang dijalankan     secara lokal menggunakan DBngin dan dikelola dengan TablePlus.
 -   Pembuatan dashboard memanfaatkan beberapa package R, yaitu shiny,
     shinythemes, bs4Dash, DT, dan dplyr, untuk memastikan tampilan yang
     interaktif dan fungsional.
