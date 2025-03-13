@@ -99,6 +99,44 @@ Berikut merupakan tampilan awal dari Portal StatHub Database
   <img width="900" height="450" src="images/tampilan_dashboard.jpeg">
 </p>
 
+## 🎨 : Palet Warna 
+
+Salah satu elemen penting dalam desain adalah pemilihan warna yang tepat. Palet warna yang digunakan dalam StatLink dirancang untuk memberikan tampilan yang profesional, bersih, dan nyaman di mata pengguna.
+
+<p align="center">
+  <img width="900" height="450" src="images/tampilan_dashboard.jpeg">
+</p>
+
+Dengan kombinasi warna yang harmonis, StatLink diharapkan dapat memberikan pengalaman yang menyenangkan saat digunakan.
+
+## 🛤 : User Flow 
+
+Sebelum masuk ke tahap pengembangan, kami terlebih dahulu menentukan **alur pengguna (user flow)** untuk memahami bagaimana pengguna akan berinteraksi dengan aplikasi. 
+
+<p align="center">
+  <img width="900" height="450" src="images/tampilan_dashboard.jpeg">
+</p>
+
+Diagram ini membantu tim dalam merancang fitur yang lebih intuitif, memudahkan navigasi, dan mengoptimalkan pengalaman pengguna saat menggunakan StatLink.
+
+## 🛤 : Wireframe
+
+Tahap awal dalam pengembangan antarmuka adalah dengan membuat **wireframe**, yaitu rancangan sederhana yang menggambarkan tata letak dan elemen-elemen utama di aplikasi. 
+
+<p align="center">
+  <img width="900" height="450" src="images/tampilan_dashboard.jpeg">
+</p>
+
+## 🛤 : Alur Wireframe
+
+Setelah wireframe dibuat, langkah berikutnya adalah menentukan **alur navigasi antar halaman**. Diagram ini menunjukkan bagaimana setiap halaman terhubung dan bagaimana pengguna akan berpindah dari satu bagian ke bagian lainnya dalam aplikasi 
+
+<p align="center">
+  <img width="900" height="450" src="images/tampilan_dashboard.jpeg">
+</p>
+
+Dengan perancangan alur yang jelas, pengembangan aplikasi bisa berjalan lebih lancar dan efisien, serta memastikan pengguna mendapatkan pengalaman yang seamless saat menggunakan StatLink.
+
 ## :octocat: Demo 
 
 Berikut merupakan link untuk shinnyapps atau dashboard dari project
