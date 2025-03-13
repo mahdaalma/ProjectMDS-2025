@@ -369,13 +369,13 @@ CREATE TABLE IF NOT EXISTS Jalur_Masuk (
 
 ```         
 .
-├── app  #ShinyApp       
+├── Source       
 │
-├── data 
+├── App 
 │   
-├── image
+├── Data
 │   
-├── src     
+├── Images     
 | 
 └── README.md
 ```
