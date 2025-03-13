@@ -124,7 +124,11 @@ Diagram ini membantu tim dalam merancang fitur yang lebih intuitif, memudahkan n
 Tahap awal dalam pengembangan antarmuka adalah dengan membuat **wireframe**, yaitu rancangan sederhana yang menggambarkan tata letak dan elemen-elemen utama di aplikasi. 
 
 <p align="center">
-  <img width="900" height="450" src="images/StatLink Wireframe.png">
+  <img width="900" height="450" src="images/StatLink Wireframe 1.png">
+</p>
+
+<p align="center">
+  <img width="900" height="450" src="images/StatLink Wireframe 2.png">
 </p>
 
 ## 🛤 : Alur Wireframe
@@ -132,7 +136,7 @@ Tahap awal dalam pengembangan antarmuka adalah dengan membuat **wireframe**, yai
 Setelah wireframe dibuat, langkah berikutnya adalah menentukan **alur navigasi antar halaman**. Diagram ini menunjukkan bagaimana setiap halaman terhubung dan bagaimana pengguna akan berpindah dari satu bagian ke bagian lainnya dalam aplikasi 
 
 <p align="center">
-  <img width="900" height="450" src="images/StatLink Wireframe Flow.png">
+  <img width="900" height="450" src="images/StatLink Wireframe Flow - Beranda.png">
 </p>
 
 Dengan perancangan alur yang jelas, pengembangan aplikasi bisa berjalan lebih lancar dan efisien, serta memastikan pengguna mendapatkan pengalaman yang seamless saat menggunakan StatLink.
