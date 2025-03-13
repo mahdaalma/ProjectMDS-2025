@@ -1,18 +1,14 @@
 <p align="center">
-<<<<<<< HEAD
+
   <img width="350" height="350" src="www/logo.JPG">
-=======
 
-<img src="www/logo.jpg" width="350" height="350"/>
-
->>>>>>> 12d43af (Save local changes before switching to dbDesigner)
 </p>
 
 <div align="center">
   
 #  StatLink Database : Portal Jurusan Statistika di Indonesia
 
-<<<<<<< HEAD
+
 [Tentang](#notebook-tentang)
 •
 [Dashboard Database](#desktop_computer-dashboard-database)
@@ -20,11 +16,6 @@
 [Demo](#octocat-demo)
 
 </div>
-=======
-[Tentang] • [Dashboard Database](#desktop_computer-dashboard-database) •
-[Demo](#octocat-demo)
-:::
->>>>>>> 12d43af (Save local changes before switching to dbDesigner)
 
 ## :bookmark_tabs: Menu
 
